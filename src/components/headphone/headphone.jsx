@@ -1,4 +1,5 @@
 import { Counter } from "../counter/counter";
+import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 
 export const Headphone = ({ name, brand, reviews, codecs }) => {
@@ -17,6 +18,7 @@ export const Headphone = ({ name, brand, reviews, codecs }) => {
         <li>{codec}</li>
       ))}
       <Counter />
+      <ReviewForm />
     </section>
   );
 };
