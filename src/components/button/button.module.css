@@ -9,3 +9,13 @@
 .big {
     font-size: 30px;
 }
+
+.dark {
+    background-color: black;
+    color: white;
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
