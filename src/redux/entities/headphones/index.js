@@ -1,23 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedHeadphones } from "../../../constants/normalized-mock";
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { getHeadphones } from "./get-headphones";
 
-const initialState = {
-  entities: normalizedHeadphones.reduce((acc, item) => {
-    acc[item.id] = item;
-
-    return acc;
-  }, {}),
-  ids: normalizedHeadphones.map((item) => item.id),
-};
+const entityAdapter = createEntityAdapter();
 
 export const headphonesSlice = createSlice({
   name: "headphones",
-  initialState,
+  initialState: entityAdapter.getInitialState(),
   selectors: {
     selectHeadphoneById: (state, id) => state.entities[id],
     selectHeadphonesIds: (state) => state.ids,
+    selectRequestStatus: (state) => state.requestStatus,
   },
+  extraReducers: (builder) =>
+    builder.addCase(getHeadphones.fulfilled, (state, { payload }) => {
+      entityAdapter.setAll(state, payload);
+    }),
 });
 
-export const { selectHeadphoneById, selectHeadphonesIds } =
+export const { selectHeadphoneById, selectHeadphonesIds, selectRequestStatus } =
   headphonesSlice.selectors;

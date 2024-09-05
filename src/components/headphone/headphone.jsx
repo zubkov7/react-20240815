@@ -35,7 +35,7 @@ export const Headphone = ({ headphoneId }) => {
       ))}
       {auth.isAuthorized && (
         <>
-          <HeadphoneCounter />
+          <HeadphoneCounter headphoneId={headphoneId} />
           <h3>Rating form</h3>
           <ReviewForm />
         </>
