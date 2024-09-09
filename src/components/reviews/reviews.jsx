@@ -5,7 +5,11 @@ import { Review } from "../review/review";
 
 export const Reviews = ({ reviewsIds, headphoneId }) => {
   const usersRequestStatus = useRequest(getUsers);
-  const reviewsRequestStatus = useRequest(getReviewsByHeadphoneId, headphoneId);
+  const reviewsRequestStatus = useRequest(
+    getReviewsByHeadphoneId,
+    headphoneId,
+    reviewsIds.length
+  );
 
   const isUsersLoading = usersRequestStatus === "pending";
   const isReviewsLoading = reviewsRequestStatus === "pending";

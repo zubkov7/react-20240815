@@ -14,6 +14,13 @@ export const reviewsSlice = createSlice({
     builder.addCase(getReviewsByHeadphoneId.fulfilled, (state, { payload }) => {
       entityAdapter.setMany(state, payload);
     }),
+  reducers: {
+    addReview: (state, { payload }) => {
+      entityAdapter.addOne(state, payload);
+    },
+  },
 });
 
 export const { selectReviewById } = reviewsSlice.selectors;
+
+export const { addReview } = reviewsSlice.actions;

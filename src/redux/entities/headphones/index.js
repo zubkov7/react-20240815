@@ -14,7 +14,14 @@ export const headphonesSlice = createSlice({
     builder.addCase(getHeadphones.fulfilled, (state, { payload }) => {
       entityAdapter.setAll(state, payload);
     }),
+  reducers: {
+    addReview: (state, { payload: { headphoneId, reviewId } }) => {
+      state.entities[headphoneId].reviews?.push(reviewId);
+    },
+  },
 });
 
 export const { selectHeadphoneById, selectHeadphonesIds } =
   headphonesSlice.selectors;
+
+export const { addReview } = headphonesSlice.actions;

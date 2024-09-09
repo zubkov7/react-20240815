@@ -4,8 +4,8 @@ import { Button } from "../button/button";
 
 import styles from "./review-form.module.css";
 
-export const ReviewForm = () => {
-  const { form, setText, incrementRating, decrementRating, clear } = useForm();
+export const ReviewForm = ({ onSave }) => {
+  const { form, setText, incrementRating, decrementRating } = useForm();
   const { text, rating } = form;
 
   return (
@@ -19,8 +19,14 @@ export const ReviewForm = () => {
         decrement={decrementRating}
         value={rating}
       />
-      <Button onClick={clear} className={styles.button} viewVariant='big'>
-        clear
+      <Button
+        onClick={() => {
+          onSave({ text, rating });
+        }}
+        className={styles.button}
+        viewVariant='big'
+      >
+        save
       </Button>
     </div>
   );
