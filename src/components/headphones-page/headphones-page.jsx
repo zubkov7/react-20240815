@@ -21,7 +21,7 @@ export const HeadphonesPage = ({ title }) => {
     setActiveHeadphoneId(id);
   };
 
-  const isLoading = requestStatus === "idle" || requestStatus === "pending";
+  const isLoading = requestStatus === "pending";
   const isError = requestStatus === "rejected";
 
   if (isLoading) {
@@ -45,7 +45,9 @@ export const HeadphonesPage = ({ title }) => {
         />
       ))}
 
-      {activeHeadphoneId && <Headphone headphoneId={activeHeadphoneId} />}
+      {activeHeadphoneId && (
+        <Headphone key={activeHeadphoneId} headphoneId={activeHeadphoneId} />
+      )}
     </div>
   );
 };

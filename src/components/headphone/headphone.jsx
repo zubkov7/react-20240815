@@ -5,6 +5,7 @@ import { ReviewForm } from "../review-form/review-form";
 import { Reviews } from "../reviews/reviews";
 import { selectHeadphoneById } from "../../redux/entities/headphones";
 import { Codec } from "../codec/codec";
+import { Codecs } from "../codecs/codecs";
 
 export const Headphone = ({ headphoneId }) => {
   const { auth } = useAuth();
@@ -23,16 +24,15 @@ export const Headphone = ({ headphoneId }) => {
       <h3>Brand</h3>
       <div>{brand}</div>
       {reviewsIds.length ? (
-        <Reviews reviewsIds={reviewsIds} />
+        <Reviews reviewsIds={reviewsIds} headphoneId={headphoneId} />
       ) : (
         <div>empty review</div>
       )}
-      <h3>Codec</h3>
-      {codecsIds.map((id) => (
-        <li key={id}>
-          <Codec id={id} />
-        </li>
-      ))}
+      {codecsIds.length ? (
+        <Codecs codecsIds={codecsIds} headphoneId={headphoneId} />
+      ) : (
+        <div>empty codecs</div>
+      )}
       {auth.isAuthorized && (
         <>
           <HeadphoneCounter headphoneId={headphoneId} />

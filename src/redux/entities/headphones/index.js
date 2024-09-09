@@ -9,7 +9,6 @@ export const headphonesSlice = createSlice({
   selectors: {
     selectHeadphoneById: (state, id) => state.entities[id],
     selectHeadphonesIds: (state) => state.ids,
-    selectRequestStatus: (state) => state.requestStatus,
   },
   extraReducers: (builder) =>
     builder.addCase(getHeadphones.fulfilled, (state, { payload }) => {
@@ -17,5 +16,5 @@ export const headphonesSlice = createSlice({
     }),
 });
 
-export const { selectHeadphoneById, selectHeadphonesIds, selectRequestStatus } =
+export const { selectHeadphoneById, selectHeadphonesIds } =
   headphonesSlice.selectors;
